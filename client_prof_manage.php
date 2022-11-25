@@ -4,25 +4,26 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$name = $address1 = $address2 = "";
+$name = $address1 = $address2 = $payment_option = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     // Check input errors before inserting in database
     // Prepare an insert statement
-    $sql = "UPDATE users SET name = ?, address1= ?, address2= ?, WHERE id=id;" ;
+    $sql = "UPDATE users SET name = ?, address1= ?, address2= ?, payment_option= ?;" ;
          
     if($stmt = mysqli_prepare($link, $sql)){
         
 // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "ssssss", $param_name, $param_address1, $param_address2, $param_city, $param_state, $param_zipcode);
+        mysqli_stmt_bind_param($stmt, "ssss", $param_name, $param_address1, $param_address2, $param_payment_option);
             
         // Set parameters
         $param_name = trim($_POST["name"]);;
 		$param_address1 = trim($_POST["address1"]);;
 		$param_address2 = trim($_POST["address2"]);;
-            
+        $param_payment_option = trim($_POST["payment_option"]);;
+  
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
             // Redirect to welcome page
@@ -60,7 +61,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			function myFunction() {
 				var checkBox = document.getElementById("myCheck");  
 				var textShip = document.getElementById("address1");  
-				var textBil = document.getElementById("address2");  
+				var textBil = document.getElementById("address2"); 
 				if (checkBox.checked == true){
 					  textBil.value=textShip.value;  
 				} else {
@@ -88,11 +89,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			<table>
 				<tr>
 					<td>Cash</td>
-					<td><input type="checkbox" name="check" onclick="onlyOne(this)"></td>
+					<td><input type="checkbox" id ="payment_option" name="check" value="0" onclick="onlyOne(this)"></td>
 					<td>Credit</td>
-					<td><input type="checkbox" name="check" onclick="onlyOne(this)"></td>
+					<td><input type="checkbox" id ="payment_option" name="check" value="1" onclick="onlyOne(this)"></td>
 					<td>Check</td>
-					<td><input type="checkbox" name="check" onclick="onlyOne(this)"></td>
+					<td><input type="checkbox" id ="payment_option" name="check" value="2" onclick="onlyOne(this)"></td>
 				</tr>
 			</table><br>
   
