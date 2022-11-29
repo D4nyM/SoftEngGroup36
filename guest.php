@@ -74,8 +74,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				<option value="8">8</option>
 			</select>
 			<br><br>
-  
+			<label> Be advised of a service fee for a no show reservation <label>
+			<br><br>
+			<label>Register for a account after Submission</label>
+			<br><br>
 			<input type="submit" value="Submit"> <a href="welcome.php" class="btn btn-warning">Home</a>
+
 		</form>
 	</center>
 </body>
