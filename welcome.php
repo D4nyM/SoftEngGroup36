@@ -24,9 +24,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <p>
         <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
 		<a href="client_prof_manage.php" class="btn btn-dark">Profile Info</a>
+		<a href="user_reservation.php" class="btn btn-success">Reserve Table</a>
         <a href="logout.php" class="btn btn-danger ml-3">Sign Out of Your Account</a>
-        <a href="fuel_quote.php" class="btn btn-success">Reserve Table</a>
-		<a href="fuel_quote_history.php" class="btn btn-info">Previous History</a>
     </p>
 </body>
 </html>
